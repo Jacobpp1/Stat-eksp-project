@@ -1,0 +1,71 @@
+plt.rcParams['axes.grid']=True
+plt.rcParams['xtick.labelsize']='large'
+plt.rcParams['ytick.labelsize']='large'
+plt.style.use('ggplot')
+
+fig, ((ax1,ax2),(ax3,ax4)) = plt.subplots(2,2, figsize=(14,14), sharey=False, sharex=False)
+for i in range(gennemgange):   # Plotter smittede for hver gennemgang
+    ax1.plot(solve_rep.t,data[i][0], ls='--', c='k', alpha=0.05)
+    ax1.plot(solve_rep.t, data[i][4], ls='--', c='b', alpha=0.05)
+    ax2.plot(solve_rep.t,data[i][1], ls='--', c='k', alpha=0.05)
+    ax3.plot(solve_rep.t,data[i][2], ls='--', c='k', alpha=0.05)
+    ax4.plot(solve_rep.t,data[i][3], ls='--', c='k', alpha=0.05)
+
+ax1.set_title('Smittede - R0 = [%1.1f - %1.1f], $\gamma$ = [1/21 - 1/10], $\mu$ = %1.0f' %(Smittetryk[0], Smittetryk[1]\
+                                                                                         , mu_dage))
+#
+ax2.set_title('Modtagelige')
+ax3.set_title('Helbredte')
+q = 364./7515.
+# q=0
+ax4.set_title('Døde - $\delta$ = %1.3f' %q)
+# ax1.plot(solve_rep.t,mean, lw=5)
+# ax1.plot(solve_rep.t, temp[:,int(gennemgange*0.025)], 'r', lw=5)
+# ax1.plot(solve_rep.t, temp[:,int(gennemgange*0.975)], 'r', lw=5)
+
+# ax1.plot(solve_rep.t, temp[:,int(gennemgange*0.1)], 'c', lw=5)
+# ax1.plot(solve_rep.t, temp[:,int(gennemgange*0.90)], 'c', lw=5)
+# ax1.plot(solve_rep.t, temp[:,int(gennemgange*0.20)], 'g', lw=5)
+# ax1.plot(solve_rep.t, temp[:,int(gennemgange*0.8)], 'g', lw=5)
+
+# ax1.plot(solve_rep.t, temp[:,int(gennemgange*0.5)], 'g', lw=3, label='50%', alpha=0.7)
+
+# ax1.fill_between(solve_rep.t, temp[:,int(gennemgange*0.025)], temp[:,int(gennemgange*0.10)], fc='r', label='95%', alpha=0.5)
+# ax1.fill_between(solve_rep.t, temp[:,int(gennemgange*0.9)], temp[:,int(gennemgange*0.975)], fc='r', alpha=0.5)
+# ax1.fill_between(solve_rep.t, temp[:,int(gennemgange*0.1)], temp[:,int(gennemgange*0.20)], fc='b', label='80%', alpha=0.5)
+# ax1.fill_between(solve_rep.t, temp[:,int(gennemgange*0.8)], temp[:,int(gennemgange*0.90)], fc='b', alpha=0.5)
+# ax1.fill_between(solve_rep.t, temp[:,int(gennemgange*0.2)], temp[:,int(gennemgange*0.5)], fc='c', label='60%', alpha=0.5)
+# ax1.fill_between(solve_rep.t, temp[:,int(gennemgange*0.5)], temp[:,int(gennemgange*0.80)], fc='c', alpha=0.5)
+
+
+# Herunder sættes linjer for at tilføje tekst til hvornår vedtag indtraf.
+
+# ax1.vlines(14,0,0.15, lw=1.5, alpha=0.8, colors='mediumorchid')
+# ax1.text(14, 0.027, 'Langsom/svag nedlukningsfase - R0: ~3 --> ~2.7', fontsize=13.5, c='k')
+
+# ax1.vlines(37,0, 0.15, lw=1.5, alpha=0.8, colors='royalblue')
+# ax1.text(37, 0.065, 'Yderligere nedlukning - R0: ~1.6 --> ~0.8', fontsize=13.5, c='k')
+
+# ax1.vlines(60,0, 0.15, lw=1.5, alpha=0.8, colors='firebrick')
+# ax1.text(60, 0.1, 'Uvis åbningsmåde - R0: [0.5 - 1.6]', fontsize=13.5, c='k')
+
+# ax1.vlines(150, 0, 0.0015, colors='royalblue')
+# ax1.text(150, 0.0013, 'R0 ændres herefter til ~1', fontsize=14)
+
+# ax1.vlines(20,0,200, lw=0.5, alpha=0.4)
+
+ax1.legend(loc='upper right')
+ax1.set_xlabel('Tid (d)', fontsize=16)
+ax2.set_xlabel('Tid (d)', fontsize=16)
+ax3.set_xlabel('Tid (d)', fontsize=16)
+ax4.set_xlabel('Tid (d)', fontsize=16)
+ax1.set_ylabel('Personer (%)', fontsize=16)
+ax2.set_ylabel('Personer (%)', fontsize=16)
+ax3.set_ylabel('Personer (%)', fontsize=16)
+ax4.set_ylabel('Personer (%)', fontsize=16)
+
+# ax1.set_ylim(0,0.2)
+# ax2.set_ylim(98,100)
+# ax3.set_ylim(0,0.25)
+# ax4.set_ylim(0,0.08)
+plt.tight_layout()
