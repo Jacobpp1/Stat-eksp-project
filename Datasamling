@@ -1,9 +1,0 @@
-data = data*100/N   # Omregner vores data til procent af befolkiningen. Bruges til at ændre y-aksen til procent.
-np.shape(data)
-temp = np.empty([datapunkter, gennemgange])
-for i in range(datapunkter):
-    temp[i] = np.sort(data[:,0,i])
-    
-mean = np.zeros(datapunkter)     # Udregner gennemsnittet af smittede
-for i in range(datapunkter):
-    mean[i] = np.mean(data[:,0,i])
